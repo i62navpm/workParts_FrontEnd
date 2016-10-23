@@ -1,3 +1,16 @@
-<h1>
-  {{title}}
-</h1>
+<md-sidenav-layout>
+  <md-sidenav #start>
+    <app-sidenav [sideNav]="start"></app-sidenav>
+  </md-sidenav>
+
+  <div>
+    <app-toolbar [sideNav]="start"></app-toolbar>
+    <div layout="column" layout-padding layout-wrap>
+      <h1>
+        {{title}}
+      </h1>
+    </div>
+  </div>
+  <button md-button (click)="start.open()">Open start sidenav</button>
+</md-sidenav-layout>
+
