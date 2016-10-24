@@ -1,0 +1,5 @@
+<div layout="row" layout-xs="column" layout-wrap layout-margin layout-align="space-around start">
+  <div flex flex-gt-xs="30" flex-gt-sm="20" *ngFor="let worker of workers">
+    <app-worker [worker]="worker"></app-worker>
+  </div>
+</div>
