@@ -1,0 +1,45 @@
+<div layout="row" layout-wrap layout-margin layout-align="center start">
+  <md-card class="worker-form"  flex flex-gt-sm="70">
+    <md-toolbar color="primary">
+      <span>Worker</span>
+    </md-toolbar>
+    <md-card-content>
+      <form>
+        <div layout="row" layout-xs="column" layout-margin>
+          <div flex flex-gt-xs="33">
+            <div class="avatar-image"></div>
+          </div>
+          <div layout="column" layout-align="space-around stretch" flex>
+            <md-input placeholder="Name">
+              <span md-prefix><i class="fa fa-user" aria-hidden="true"></i></span>
+            </md-input>
+            <md-input placeholder="Last name"></md-input>
+          </div>
+        </div>
+        <div layout="row" layout-xs="column" layout-margin>
+          <md-input placeholder="Address" flex flex-gt-xs="50">
+            <span md-prefix><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+          </md-input>
+          <md-input placeholder="City" flex flex-gt-xs="30"></md-input>
+          <md-input placeholder="Cp" flex flex-gt-xs="20" #cpCount>
+            <md-hint align="end">{{cpCount.characterCount}} / 5</md-hint>
+          </md-input>
+        </div>
+        <div layout="row" layout-xs="column" layout-margin>
+          <div layout="column" flex flex-gt-xs="50">
+            <p>Normal salary</p>
+            <md-slider min="30" flex max="100" color="primary" thumb-label value="60"></md-slider>
+          </div>
+          <div layout="column" flex flex-gt-xs="50">
+            <p>Half salary</p>
+            <md-slider min="15" flex max="100" color="primary" thumb-label value="30"></md-slider>
+          </div>
+        </div>
+
+        <div layout="row" layout-align="end">
+          <button type="submit" md-raised-button color="primary">Save</button>
+        </div>
+      </form>
+    </md-card-content>
+  </md-card>
+</div>
