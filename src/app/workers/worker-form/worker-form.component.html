@@ -4,40 +4,58 @@
       <span>Worker</span>
     </md-toolbar>
     <md-card-content>
-      <form flex layout="column" layout-margin>
+      <form flex layout="column" layout-margin (ngSubmit)="onSubmit(user)" [formGroup]="user" novalidate>
         
         <div layout="row" layout-xs="column" layout-margin>
           <div flex flex-gt-xs="33" class="avatar-image"></div>
           <div flex layout="column" layout-align="space-around stretch">
-            <md-input placeholder="Name">
+            <md-input placeholder="Name" formControlName="name">
               <span md-prefix><i class="fa fa-user" aria-hidden="true"></i></span>
             </md-input>
-            <md-input placeholder="Last name"></md-input>
+            <div class="error" *ngIf="user.get('name').touched && user.get('name').hasError('required')">
+              Name is required
+            </div>
+
+            <md-input placeholder="Last name" formControlName="lastName"></md-input>
+            <div class="error" *ngIf="user.get('lastName').touched && user.get('lastName').hasError('required')">
+              Last name is required
+            </div>
+
+            <md-input placeholder="Email" formControlName="email"></md-input>
           </div>
         </div>
 
-        <div layout="row" layout-xs="column" layout-margin>
-          <md-input placeholder="Address" flex flex-gt-xs="50">
-            <span md-prefix><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-          </md-input>
-          <md-input placeholder="City" flex flex-gt-xs="30"></md-input>
-          <md-input placeholder="Cp" flex flex-gt-xs="20" #cpCount>
+        <div layout="row" layout-xs="column" layout-margin formGroupName="address">
+          <div layout="column" flex flex-gt-xs="50">
+            <md-input placeholder="Street" formControlName="street">
+              <span md-prefix><i class="fa fa-map-marker" aria-hidden="true"></i></span>
+            </md-input>
+            <div class="error" *ngIf="user.get('address.street').touched && user.get('address.street').hasError('required')">
+              Street is required
+            </div>
+          </div>
+
+          <div layout="column" flex flex-gt-xs="30">
+          <md-input placeholder="City" formControlName="city"></md-input>
+          <div class="error" *ngIf="user.get('address.city').touched && user.get('address.city').hasError('required')">
+            City is required
+          </div>
+          </div>
+          <md-input placeholder="Cp" flex flex-gt-xs="20" #cpCount formControlName="cp">
             <md-hint align="end">{{cpCount.characterCount}} / 5</md-hint>
           </md-input>
         </div>
         
-        <div layout="column" layout-margin>
+        <div layout="column" layout-margin formGroupName="salary">
           <p layout-margin>Normal salary</p>
-          <md-slider min="30" max="100" color="primary" thumb-label value="60"></md-slider>
-        </div>
+          <md-slider min="30" max="100" color="primary" thumb-label formControlName="full"></md-slider>
 
-        <div layout="column" layout-margin>
           <p layout-margin>Half salary</p>
-          <md-slider min="15" max="100" color="primary" thumb-label value="30"></md-slider>
+          <md-slider min="15" max="100" color="primary" thumb-label formControlName="half"></md-slider>
         </div>
         
         <div layout="row" layout-align="end">
-          <button type="submit" md-raised-button color="primary">Save</button>
+          <button type="submit" md-raised-button color="primary" type="submit" [disabled]="user.invalid">Save</button>
         </div>
       </form>
       

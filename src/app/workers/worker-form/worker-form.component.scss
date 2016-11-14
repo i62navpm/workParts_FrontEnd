@@ -2,7 +2,6 @@
   padding: 0;
   md-card-content {
     padding: 24px;
-
     .avatar-image {
       background: url('/assets/images/default-avatar.png') no-repeat;
       background-position: center;
@@ -10,5 +9,8 @@
       width: 100%;
       height: 200px; 
     }
-  }
+    .error {
+      color: red;
+    }    
+  }  
 }
